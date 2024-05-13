@@ -26,5 +26,8 @@ public class TareaBBDD {
 
         // Eliminar un jugador
         objetoConexion.borrarJugador(2);
+        
+        /*//crear una base de datos
+        objetoConexion.crearBBDD("prueba");*/
     }
 }

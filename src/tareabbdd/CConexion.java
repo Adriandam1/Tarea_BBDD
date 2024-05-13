@@ -23,6 +23,20 @@ public class CConexion {
         }
         return conectar;
     }
+    /* Este metodo sirve para crear una base de datos
+    * introduces el nombre de la base de datos
+    * return mensaje informativo
+    */
+    
+    public void crearBBDD(String bd){
+       try (Statement stmt = conectar.createStatement()) {
+            String sql = "CREATE database "+bd;
+            stmt.executeUpdate(sql);
+            JOptionPane.showMessageDialog(null, "La base de datos "+bd+" fue creada con exito");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al crear la base de datos "+bd+": " + e.getMessage());
+        }
+    }
 
     public void crearTabla(String equipo) {
         try (Statement stmt = conectar.createStatement()) {
@@ -52,7 +66,7 @@ public class CConexion {
     }
 
     public void borrarJugador(int id) {
-        String sql = "DELETE FROM Madrid WHERE ID = ?";
+        String sql = "DELETE FROM  WHERE ID = ?";
         try (PreparedStatement pstmt = conectar.prepareStatement(sql)) {
             pstmt.setInt(1, id);
             int affectedRows = pstmt.executeUpdate();
